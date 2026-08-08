@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.ipynb_checkpoints/
+.venv/
+env/
+
+# data is not shipped -- see docs/DATA.md
+data/
+*.pkl
+!examples/precomputed/*.npz
+
+# training artefacts
+logs/
+lightning_logs/
+wandb/
+results/
+*.ckpt
+!checkpoints/equisite_split0.9.ckpt
+
+.DS_Store

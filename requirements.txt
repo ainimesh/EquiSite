@@ -1,0 +1,18 @@
+# --- core (needed for evaluate.py, demo.py, and the model itself) -------------------
+torch>=2.0
+torch-geometric>=2.4
+torch-scatter
+torch-cluster
+pytorch-lightning>=2.0
+numpy>=1.23
+scipy>=1.9
+pyyaml>=6.0
+scikit-learn>=1.1          # train/val split only
+
+# --- inference on your own structures (scripts/inference.py) ------------------------
+# fair-esm downloads ~2.5 GB of weights on first use; not required for scripts/demo.py
+fair-esm>=2.0.0
+
+# --- optional: reproducing the paper figures ----------------------------------------
+# matplotlib>=3.6
+# pandas>=1.5

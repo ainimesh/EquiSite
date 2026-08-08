@@ -1,0 +1,83 @@
+data:
+  processed_pkl: EquiSite/preprocessed_data/unisite-ds-v1/unisite_setpred_processed.pkl
+  split_dir: EquiSite/Datasets/unisite-ds-v1/_pkl_files
+  split: '0.9'
+  batch_size: 16
+  num_workers: 0
+  val_frac: 0.05
+  random_seed: 42
+  pin_memory: true
+  limit: 0
+model:
+  node_feat_dim: 1280
+  n_atom_basis: 128
+  n_interactions: 4
+  n_rbf: 32
+  max_num_neighbors: 64
+  cutoff_fn:
+    __target__: utils.utils.CosineCutoff
+    cutoff: 10.0
+  radial_basis: expnorm
+  activation: swish
+  weight_init: xavier_uniform
+  bias_init: zeros
+  num_heads: 8
+  attn_dropout: 0.3
+  learnable_temperature: true
+  fixed_temperature_value: 2.0
+  lmax: 2
+  gda_degrees: scalar
+  attention_type: default
+  steerable_init: spherical
+  edge_updates: true
+  scale_edge: false
+  aggr: add
+  sep_htr: true
+  sep_dir: true
+  sep_tensor: true
+  edge_ln: ''
+head:
+  mlp_hidden: 128
+  dropout: 0.0
+  use_mask_head: true
+  mask_n_rbf: 16
+  mask_cutoff: 20.0
+  w_mask_dice: 2.0
+  w_mask_bce: 1.0
+  mask_focal_alpha: 0.25
+  mask_focal_gamma: 2.0
+  mask_dice_smooth: 1.0
+loss:
+  obj_alpha: 0.25
+  obj_gamma: 2.0
+  center_alpha: 0.95
+  center_gamma: 2.0
+  w_obj: 0.5
+  w_dice: 0.5
+  w_center: 5.0
+  w_vote: 1.0
+  dice_smooth: 1.0
+eval:
+  iou_thr: 0.5
+  dcc_thr: 4.0
+  decode_mask:
+    q_thresh: 0.3
+    lm_radius: 8.0
+    mask_thresh: 0.4
+    nms_iou: 0.5
+    fallback_topk: 1
+optimizer:
+  name: AdamW
+  lr: 0.0005
+  weight_decay: 0.05
+  scheduler:
+    name: cosine
+    T_0: 50
+    T_mult: 1
+    eta_min: 1.0e-06
+training:
+  max_epochs: 150
+  early_stopping_patience: 20
+  gradient_clip: 15.0
+  mixed_precision: false
+  results_csv_path: EquiSite/results/exp_combo_sb_0.9.csv

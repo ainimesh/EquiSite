@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "equisite"
+version = "1.0.0"
+description = "Lightweight SE(3)-equivariant, queryless set prediction for multi-site protein-ligand binding site detection"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+  "torch>=2.0", "torch-geometric>=2.4", "pytorch-lightning>=2.0",
+  "numpy>=1.23", "scipy>=1.9", "pyyaml>=6.0", "scikit-learn>=1.1",
+]
+
+[project.optional-dependencies]
+inference = ["fair-esm>=2.0.0"]
+
+[project.scripts]
+equisite-predict  = "scripts.inference:main"
+equisite-demo     = "scripts.demo:main"
+equisite-evaluate = "scripts.evaluate:main"
+
+[tool.setuptools.packages.find]
+include = ["equisite*"]
