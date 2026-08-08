@@ -12,7 +12,3 @@ scikit-learn>=1.1          # train/val split only
 # --- inference on your own structures (scripts/inference.py) ------------------------
 # fair-esm downloads ~2.5 GB of weights on first use; not required for scripts/demo.py
 fair-esm>=2.0.0
-
-# --- optional: reproducing the paper figures ----------------------------------------
-# matplotlib>=3.6
-# pandas>=1.5

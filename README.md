@@ -3,7 +3,7 @@
 **Lightweight SE(3)-equivariant, queryless set prediction for multi-site protein–ligand binding sites.**
 
 <p align="center">
-  <img src="assets/figures/equisite_architecture.png" alt="EquiSite architecture" width="100%">
+  <img src="assets/figures/equisite_architecture.pdf" alt="EquiSite architecture" width="100%">
 </p>
 
 A protein often binds ligands at more than one pocket, so finding binding sites is a *set prediction*
